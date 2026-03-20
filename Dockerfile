@@ -42,7 +42,9 @@ FROM alpine:latest
 ENV SESSION_SECRET=my_secure_secret_123456 \
     SQL_DSN=sqlite3::memory:
 
-RUN apk add --no-cache ca-certificates tzdata
+RUN apk update && \
+    apk add --no-cache ca-certificates tzdata || \
+    (sleep 5 && apk update && apk add --no-cache ca-certificates tzdata)
 
 COPY --from=builder2 /build/one-api /
 
