@@ -38,9 +38,7 @@ RUN go build -trimpath -ldflags "-s -w -X 'github.com/songquanpeng/one-api/commo
 
 FROM alpine:latest
 
-# 关键修改：添加环境变量，用内存SQLite+会话密钥，彻底绕开数据库连接坑
-ENV SESSION_SECRET=my_secure_secret_123456 \
-    SQL_DSN=sqlite3::memory:
+ENV SESSION_SECRET=my_secure_secret_123456
 
 RUN apk add --no-cache ca-certificates tzdata
 
