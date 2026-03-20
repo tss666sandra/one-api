@@ -1,14 +1,15 @@
 {
-  "builds": [
-    {
-      "src": "main.go",
-      "use": "@vercel/go",
-      "config": {
-        "goVersion": "1.21",
-        "command": "./one-api --port $PORT --host 0.0.0.0 --log-dir /tmp --sql-dsn \"sqlite3:///tmp/oneapi.db\""
-      }
+  "build": {
+    "env": {
+      "GO_VERSION": "1.21"
     }
-  ],
+  },
+  "functions": {
+    "main.go": {
+      "runtime": "@vercel/go@1.21.0",
+      "maxDuration": 10
+    }
+  },
   "routes": [
     {
       "src": "/(.*)",
