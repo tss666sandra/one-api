@@ -1,4 +1,14 @@
 {
+  "build": {
+    "env": {
+      "GO_VERSION": "1.21"
+    }
+  },
+  "functions": {
+    "app/**/*.go": {
+      "runtime": "@vercel/go@1.21.0"
+    }
+  },
   "builds": [
     {
       "src": "main.go",
